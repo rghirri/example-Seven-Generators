@@ -98,4 +98,52 @@ public static function IsDateSun($currentDay)
       }
 }
 
+public static function IsDateChris($currentDay)
+{
+  $currentDay = new \DateTime($currentDay);
+  $currentDay = $currentDay->format('m-d');
+
+  if ($currentDay == "12-25")
+  
+  {
+      return true;
+    }else
+    {
+    return false;
+    }
+
+}
+
+public static function IsDateBox($currentDay)
+{
+  $currentDay = new \DateTime($currentDay);
+  $currentDay = $currentDay->format('m-d');
+
+  if ($currentDay == "12-26")
+  
+  {
+      return true;
+    }else
+    {
+    return false;
+    }
+
+}
+
+public static function IsDateNewYear($currentDay)
+{
+  $currentDay = new \DateTime($currentDay);
+  $currentDay = $currentDay->format('m-d');
+
+  if ($currentDay == "01-01")
+  
+  {
+      return true;
+    }else
+    {
+    return false;
+    }
+
+}
+
 }
