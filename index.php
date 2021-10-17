@@ -11,7 +11,7 @@ $fileName = 'employee-birthdates.txt';
 
 
 $lineGeneratorEmployee = EmployeeData::getEmployeeData($fileName);
-//$lineGeneratorCompareDates = EmployeeData::CompareDates($fileName);
+$lineGeneratorCompareDates = EmployeeData::getEmployeeData($fileName);
 
 foreach ($lineGeneratorEmployee as $lineEmployee) {
 if ($lineGeneratorEmployee->current()->name == "") {
@@ -19,9 +19,8 @@ if ($lineGeneratorEmployee->current()->name == "") {
 }
   $currentDay = $lineEmployee->birthDay;
   $currentDay = new \DateTime($currentDay);
-  $nextDates = $lineGeneratorEmployee->current()->birthDay;
-  $nextDates = $lineGeneratorEmployee->next();
-  $nextDates = $lineGeneratorEmployee->current()->birthDay;
+  $nextDates = $lineGeneratorCompareDates->next();
+  $nextDates = $lineGeneratorCompareDates->current()->birthDay;
   $nextDates = new \DateTime($nextDates);
 
   $dateDiff = date_diff($nextDates, $currentDay);
@@ -29,9 +28,8 @@ if ($lineGeneratorEmployee->current()->name == "") {
   if ($dateDiff->d == 1){
     echo $lineEmployee->name. "</br>";
     echo $lineEmployee->birthDay. "</br>";
-    echo $lineGeneratorEmployee->current()->name. "</br>";
-    echo $lineGeneratorEmployee->current()->birthDay. "</br>";
+    echo $lineGeneratorCompareDates->current()->name. "</br>";
+    echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
   }
 
 }
-  
