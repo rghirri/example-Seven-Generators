@@ -14,17 +14,15 @@ $lineGeneratorEmployee = EmployeeData::getEmployeeData($fileName);
 //$lineGeneratorCompareDates = EmployeeData::CompareDates($fileName);
 
 foreach ($lineGeneratorEmployee as $lineEmployee) {
-  //var_dump($lineEmployee);
-  // var_dump($lineGeneratorCompareDates->current());
 if ($lineGeneratorEmployee->current()->name == "") {
   exit();
 }
-  $currentDay = $lineGeneratorEmployee->current()->birthDay;
-
+  $currentDay = $lineEmployee->birthDay;
   $currentDay = new \DateTime($currentDay);
+  $nextDates = $lineGeneratorEmployee->current()->birthDay;
   $nextDates = $lineGeneratorEmployee->next();
-  $nextDates = $lineGeneratorEmployee->current();
-  $nextDates = new \DateTime($nextDates->birthDay);
+  $nextDates = $lineGeneratorEmployee->current()->birthDay;
+  $nextDates = new \DateTime($nextDates);
 
   $dateDiff = date_diff($nextDates, $currentDay);
 
@@ -35,39 +33,5 @@ if ($lineGeneratorEmployee->current()->name == "") {
     echo $lineGeneratorEmployee->current()->birthDay. "</br>";
   }
 
-  //var_dump($lineEmployee);
-    
-    //var_dump($dateDiff->d);
-
-    
-    
-    //$dateDiff = $nextDates - $currentDay;
-
-    // var_dump(gettype($nextDates));
-    
-    //$lineGeneratorCompareDates->next();
 }
-
-
-// $both = new MultipleIterator();
-// $both->attachIterator($lineGeneratorEmployee);
-// $both->attachIterator($lineGeneratorCompareDates);
-
-
-// foreach ($both as list($valueA, $valueB)) {
   
-  
-
-//   }
-  
-
-
-
-
-// foreach ($lineGeneratorDayMonth as $lineDayMonth) {
-//   $birthDate = $lineGeneratorEmployee->
-//   $dateOfBirth = new \DateTime($birthDate);
-//   $dateOfBirth = $dateOfBirth->format('m-d');
-//   if 
-//   var_dump($lineDayMonth);
-// }

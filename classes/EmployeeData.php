@@ -12,7 +12,6 @@ class EmployeeData{
       $str = fgets($myfile);
       $employeeDateArray = explode(",",$str);
       $lineArray = array('name' => $employeeDateArray[0], 'birthDay' => isset($employeeDateArray[1]) ? $employeeDateArray[1] : null);
-      
       $dateOfBirth = new \DateTime($lineArray['birthDay']);
       $currentDate = $dateOfBirth->format(date("Y")."-m-d");
       $age = date_diff($dateOfBirth, date_create($currentDate));
