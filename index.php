@@ -40,14 +40,39 @@ if ($lineGeneratorEmployee->current()->name == "") {
   
   $IsDateDup = CakeDay::IsDateDup($currentDay,$fileName);
 
-  if ($IsDateDup){
+  // if ($IsDateDup){
+  //   echo $currentName. "</br>";
+  //   echo $currentDay. "</br>";
+    // echo $lineGeneratorCompareDates->current()->name. "</br>";
+    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+  // }
+
+  $IsDateFri = CakeDay::IsDateFri($currentDay);
+
+  if ($IsDateFri){
+    // echo $currentName. "</br>";
+    // echo $currentDay. "</br>";
+    // echo $lineGeneratorCompareDates->current()->name. "</br>";
+    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+  }
+
+  $IsDateSat = CakeDay::IsDateSat($currentDay);
+
+  if ($IsDateSat){
     echo $currentName. "</br>";
     echo $currentDay. "</br>";
     // echo $lineGeneratorCompareDates->current()->name. "</br>";
     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
   }
 
-  
+  $IsDateSun = CakeDay::IsDateSun($currentDay);
+
+  if ($IsDateSun){
+    // echo $currentName. "</br>";
+    // echo $currentDay. "</br>";
+    // echo $lineGeneratorCompareDates->current()->name. "</br>";
+    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+  }
   
 
 }

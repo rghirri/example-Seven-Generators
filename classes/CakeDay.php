@@ -3,10 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+require "./classes/ExtraCode.php";
+
 class cakeDay{
 
 
-  public static function IsDateRow($nextDay, $currentDay){
+  public static function IsDateRow($nextDay, $currentDay)
+  {
 
     $currentDay = new \DateTime($currentDay);
     $nextDay = new \DateTime($nextDay);
@@ -19,8 +22,9 @@ class cakeDay{
   
 }
 
-public static function IsDateDup($currentDay,$fileName){
-  $dupDay = self::datePattern($fileName);
+public static function IsDateDup($currentDay,$fileName)
+{
+  $dupDay = ExtraCode::datePattern($fileName);
   $currentDay = new \DateTime($currentDay);
   //$nextDay = new \DateTime($nextDay);
   $currentDay = $currentDay->format('m-d');
@@ -35,7 +39,9 @@ public static function IsDateDup($currentDay,$fileName){
   // return false;
   // }
 
-  if ((in_array($currentDay, $dupDay))){
+  if ((in_array($currentDay, $dupDay)))
+  
+  {
       return true;
     }else
     {
@@ -44,38 +50,52 @@ public static function IsDateDup($currentDay,$fileName){
 
 }
 
-public static function datePattern($file){
-  $myfile = fopen($file, "r") or die("Unable to open file!");
-  $dupPat = [];
-// Output one line until end-of-file
-while(!feof($myfile)) {
-  $str = fgets($myfile);
-  $employeeDateArray = explode(",",$str);
-  $birthDate = isset($employeeDateArray[1]) ? $employeeDateArray[1] : null;
-  $dateOfBirth = new \DateTime($birthDate);
-  $dateOfBirth = $dateOfBirth->format('m-d');
-  $dupPat [] = $dateOfBirth;
-
+public static function IsDateFri($currentDay)
+{
+      $currentDay = new \DateTime($currentDay);
+      $timestamp = strtotime($currentDay->format('Y-m-d'));
+      $cakeDay = date('D', $timestamp);
+      
+      
+      if ($cakeDay == "Fri"){
+        return true;
+      }
+      else
+      {
+        return false;
+      }
 }
-fclose($myfile);
-return self::dups($dupPat);
+
+public static function IsDateSat($currentDay)
+{
+      $currentDay = new \DateTime($currentDay);
+      $timestamp = strtotime($currentDay->format('Y-m-d'));
+      $cakeDay = date('D', $timestamp);
+      
+      
+      if ($cakeDay == "Sat"){
+        return true;
+      }
+      else
+      {
+        return false;
+      }
 }
 
-public static function dups($array){
-$array_temp = array();
-$patDupReturn = array();
-   foreach($array as $val)
-   {
-     if (!in_array($val, $array_temp))
-     {
-       $array_temp[] = $val;
-     }
-     else
-     {
-      $patDupReturn [] = $val;
-     }
-   }
-   return $patDupReturn;
-  }
+public static function IsDateSun($currentDay)
+{
+      $currentDay = new \DateTime($currentDay);
+      $timestamp = strtotime($currentDay->format('Y-m-d'));
+      $cakeDay = date('D', $timestamp);
+      
+      
+      if ($cakeDay == "Sun"){
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+}
 
 }
