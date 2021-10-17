@@ -1,5 +1,5 @@
 <?php
-require "./classes/CakeDay.php";
+require "./classes/NameDate.php";
 
 class EmployeeData{
 
@@ -18,7 +18,7 @@ class EmployeeData{
       $years = "P".$age->format("%y")."Y";
       $dateOfBirth->add(new DateInterval($years));
       $dateOfBirth = $dateOfBirth->format('Y-m-d');
-      $employee = new CakeDay($lineArray['name'], $dateOfBirth);
+      $employee = new NameDate($lineArray['name'], $dateOfBirth);
 
       yield $employee;
 

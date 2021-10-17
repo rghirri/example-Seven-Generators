@@ -1,14 +1,20 @@
 <?php
 
-class CakeDay{
-  public $name;
-  public $birthDay;
+class cakeDay{
 
-  public function __construct($name,$birthDay)
-  {
-    $this->name = $name;
-    $this->birthDay = $birthDay;
-  }
+
+  public static function IsDateRow($nextDate, $currentDate){
+
+    $currentDate = new \DateTime($currentDate);
+    $nextDate = new \DateTime($nextDate);
+    $dateDiff = date_diff($nextDate, $currentDate);
+
+    if ($dateDiff->d == 1){
+      return true;
+    }
+    return false;
   
+}
 
-} 
+
+}
