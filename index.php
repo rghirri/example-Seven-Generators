@@ -13,32 +13,72 @@ $fileName = 'employee-birthdates.txt';
 $lineGeneratorEmployee = EmployeeData::getEmployeeData($fileName);
 $lineGeneratorCompareDates = EmployeeData::getEmployeeData($fileName);
 
+
 foreach ($lineGeneratorEmployee as $lineEmployee) {
+
+  
 if ($lineGeneratorEmployee->current()->name == "") {
   exit();
 }
+
+
   
   $currentName = $lineEmployee->name;
   $currentDay = $lineEmployee->birthDay;
   $nextDay = $lineGeneratorCompareDates->next();
   $nextDay = $lineGeneratorCompareDates->current()->birthDay;
+  $nextName = $lineGeneratorCompareDates->current()->name;
+  
   
   $IsDateRow = CakeDay::IsDateRow($nextDay, $currentDay);
 
-  // if ($IsDateRow){
-  //   $currentDay =  $lineEmployee->birthDay;
-  //   $nextDay =  $lineGeneratorCompareDates->current()->birthDay;
-  //   $currentName =  $lineEmployee->name;
-  //   $nextName =  $lineGeneratorCompareDates->current()->name;
-  //   echo "Row dates </br>";
-  //   echo $currentName."</br>";
-  //   echo $currentDay."</br>";
-  //   echo $nextName."</br>";
-  //   echo $nextDay."</br>";
-  // }
+  if ($IsDateRow){
+      //  Fri, Sat, Sun, Christmasday, Boxingday, NewYear test
+      // Fri
+      $IsDateFriNext = CakeDay::IsDateFri($nextDay);
+      $IsDateFriCurrent = CakeDay::IsDateFri($currentDay);
+      //*************************************************** */
+      // Sat
+      $IsDateSatNext = CakeDay::IsDateSat($currentDay);
+      $IsDateSatCurrent = CakeDay::IsDateSat($currentDay);
+      /**************************************************** */
+      if ($IsDateFriNext){
+        $currentDays = '4';
+        $nextDays = '3';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+      elseif ($IsDateFriCurrent){
+        $currentDays = '4';
+        $nextDays = '3';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+      // elseif ($IsDateSatNext){
+      //   $currentDays = '4';
+      //   $nextDays = '3';
+      //   CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      // }
+
+      else
+      {
+        $currentDays = '2';
+        $nextDays = '1';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+
+      
+    // $currentDay =  $lineEmployee->birthDay;
+    // $nextDay =  $lineGeneratorCompareDates->current()->birthDay;
+    // $currentName =  $lineEmployee->name;
+    // $nextName =  $lineGeneratorCompareDates->current()->name;
+    // echo "Row dates </br>";
+    // echo $currentName."</br>";
+    // echo $currentDay."</br>";
+    // echo $nextName."</br>";
+    // echo $nextDay."</br>";
+  }
 
   
-  $IsDateDup = CakeDay::IsDateDup($currentDay,$fileName);
+  //$IsDateDup = CakeDay::IsDateDup($currentDay,$fileName);
 
   // if ($IsDateDup){
   //   echo $currentName. "</br>";
@@ -56,50 +96,50 @@ if ($lineGeneratorEmployee->current()->name == "") {
     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
   }
 
-  $IsDateSat = CakeDay::IsDateSat($currentDay);
+ // $IsDateSat = CakeDay::IsDateSat($currentDay);
 
-  if ($IsDateSat){
-    // echo $currentName. "</br>";
-    // echo $currentDay. "</br>";
-    // echo $lineGeneratorCompareDates->current()->name. "</br>";
-    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+//   if ($IsDateSat){
+//     // echo $currentName. "</br>";
+//     // echo $currentDay. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->name. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+//   }
 
-  $IsDateSun = CakeDay::IsDateSun($currentDay);
+//  // $IsDateSun = CakeDay::IsDateSun($currentDay);
 
-  if ($IsDateSun){
-    // echo $currentName. "</br>";
-    // echo $currentDay. "</br>";
-    // echo $lineGeneratorCompareDates->current()->name. "</br>";
-    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+//   if ($IsDateSun){
+//     // echo $currentName. "</br>";
+//     // echo $currentDay. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->name. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+//   }
 
-  $IsDateChris = CakeDay::IsDateChris($currentDay);
+//  // $IsDateChris = CakeDay::IsDateChris($currentDay);
   
-  if ($IsDateChris){
-    // echo $currentName. "</br>";
-    // echo $currentDay. "</br>";
-    // echo $lineGeneratorCompareDates->current()->name. "</br>";
-    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+//   if ($IsDateChris){
+//     // echo $currentName. "</br>";
+//     // echo $currentDay. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->name. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+//   }
 
-  $IsDateBox = CakeDay::IsDateBox($currentDay);
+//   //$IsDateBox = CakeDay::IsDateBox($currentDay);
   
-  if ($IsDateBox){
-    // echo $currentName. "</br>";
-    // echo $currentDay. "</br>";
-    // echo $lineGeneratorCompareDates->current()->name. "</br>";
-    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+//   if ($IsDateBox){
+//     // echo $currentName. "</br>";
+//     // echo $currentDay. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->name. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+//   }
 
-  $IsDateNewYear = CakeDay::IsDateNewYear($currentDay);
+//   //$IsDateNewYear = CakeDay::IsDateNewYear($currentDay);
   
-  if ($IsDateNewYear){
-    // echo $currentName. "</br>";
-    // echo $currentDay. "</br>";
-    // echo $lineGeneratorCompareDates->current()->name. "</br>";
-    // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+//   if ($IsDateNewYear){
+//     // echo $currentName. "</br>";
+//     // echo $currentDay. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->name. "</br>";
+//     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+//   }
 
 
 }

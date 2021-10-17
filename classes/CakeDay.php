@@ -50,10 +50,10 @@ public static function IsDateDup($currentDay,$fileName)
 
 }
 
-public static function IsDateFri($currentDay)
+public static function IsDateFri($Daytest)
 {
-      $currentDay = new \DateTime($currentDay);
-      $timestamp = strtotime($currentDay->format('Y-m-d'));
+      $Daytest = new \DateTime($Daytest);
+      $timestamp = strtotime($Daytest->format('Y-m-d'));
       $cakeDay = date('D', $timestamp);
       
       
@@ -144,6 +144,21 @@ public static function IsDateNewYear($currentDay)
     return false;
     }
 
+}
+
+public static function DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays)
+{
+      
+      $currentDayOriginal = new \DateTime($currentDay);
+      $nextDayOriginal = new \DateTime($nextDay);
+      $currentDay = new \DateTime($currentDay);
+      $nextDay = new \DateTime($nextDay);
+      $birthCurrent = $currentDay->add(new DateInterval('P'.$currentDays.'D'));
+      $birthNext = $nextDay->add(new DateInterval('P'.$nextDays.'D'));
+
+
+      echo $currentName." born the ".$currentDayOriginal->format('dS F Y'). " shares one large cake with coleague with same birthday On ".$birthCurrent->format('dS F Y')."</br></br>";
+      echo $nextName." born the ".$nextDayOriginal->format('dS F Y'). " shares one large cake with coleague with same birthday </br>".$birthNext->format('dS F Y')."</br></br>";
 }
 
 }
