@@ -23,20 +23,25 @@ if ($lineGeneratorEmployee->current()->name == "") {
   $nextDates = $lineGeneratorCompareDates->next();
   $nextDates = $lineGeneratorCompareDates->current()->birthDay;
   
+  // $IsDateRow = CakeDay::IsDateRow($nextDates, $currentDay);
 
-  $IsDateRow = CakeDay::IsDateRow($nextDates, $currentDay);
+  // if ($IsDateRow){
+  //   echo $lineEmployee->name. "</br>";
+  //   echo $lineEmployee->birthDay. "</br>";
+  //   echo $lineGeneratorCompareDates->current()->name. "</br>";
+  //   echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+  // }
 
-  if ($IsDateRow){
-    echo $lineEmployee->name. "</br>";
-    echo $lineEmployee->birthDay. "</br>";
-    echo $lineGeneratorCompareDates->current()->name. "</br>";
-    echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+  //  $IsDateDup = CakeDay::IsDateDup($nextDates, $currentDay);
 
-
-
+  // if ($IsDateDup){
+  //   echo $lineEmployee->name. "</br>";
+  //   echo $lineEmployee->birthDay. "</br>";
+  //   echo $lineGeneratorCompareDates->current()->name. "</br>";
+  //   echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
+  // }
 
   
-
+  
 
 }

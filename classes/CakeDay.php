@@ -16,5 +16,18 @@ class cakeDay{
   
 }
 
+public static function IsDateDup($nextDate, $currentDate){
+
+  // $currentDate = new \DateTime($currentDate);
+  // $nextDate = new \DateTime($nextDate);
+  // $dateDiff = date_diff($nextDate, $currentDate);
+
+  if ($nextDate == $currentDate){
+    return true;
+  }
+  return false;
+
+}
+
 
 }
