@@ -39,12 +39,16 @@ if ($lineGeneratorEmployee->current()->name == "") {
       $IsDateFriCurrent = CakeDay::IsDateFri($currentDay);
       //*************************************************** */
       // Sat
-      $IsDateSatNext = CakeDay::IsDateSat($currentDay);
+      $IsDateSatNext = CakeDay::IsDateSat($nextDay);
       $IsDateSatCurrent = CakeDay::IsDateSat($currentDay);
       /**************************************************** */
+      // Sun
+      $IsDateSunNext = CakeDay::IsDateSun($nextDay);
+      $IsDateSunCurrent = CakeDay::IsDateSun($currentDay);
+      /**************************************************** */
       if ($IsDateFriNext){
-        $currentDays = '4';
-        $nextDays = '3';
+        $currentDays = '5';
+        $nextDays = '4';
         CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
       elseif ($IsDateFriCurrent){
@@ -52,11 +56,28 @@ if ($lineGeneratorEmployee->current()->name == "") {
         $nextDays = '3';
         CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
       }
-      // elseif ($IsDateSatNext){
-      //   $currentDays = '4';
-      //   $nextDays = '3';
-      //   CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
-      // }
+      elseif ($IsDateSatNext){
+        $currentDays = '5';
+        $nextDays = '4';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+      elseif ($IsDateSatCurrent){
+        $currentDays = '3';
+        $nextDays = '2';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+
+      elseif ($IsDateSunNext){
+        $currentDays = '5';
+        $nextDays = '4';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+      elseif ($IsDateSunCurrent){
+        $currentDays = '3';
+        $nextDays = '2';
+        CakeDay::DisplayOutput($nextDay, $currentDay,$nextName, $currentName,$currentDays,$nextDays);
+      }
+
 
       else
       {
@@ -87,14 +108,14 @@ if ($lineGeneratorEmployee->current()->name == "") {
     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
   // }
 
-  $IsDateFri = CakeDay::IsDateFri($currentDay);
+  //$IsDateFri = CakeDay::IsDateFri($currentDay);
 
-  if ($IsDateFri){
+  //if ($IsDateFri){
     // echo $currentName. "</br>";
     // echo $currentDay. "</br>";
     // echo $lineGeneratorCompareDates->current()->name. "</br>";
     // echo $lineGeneratorCompareDates->current()->birthDay. "</br>";
-  }
+  //}
 
  // $IsDateSat = CakeDay::IsDateSat($currentDay);
 
